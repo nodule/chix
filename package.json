@@ -1,0 +1,30 @@
+{
+  "name": "nodule-chix",
+  "description": "Chiχ for Chiχ",
+  "author": "Rob Halff <rob.halff@gmail.com>",
+  "version": "0.0.2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/chix.git"
+  },
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "main": "x",
+  "scripts": {
+    "test": "chit -r"
+  },
+  "devDependencies": {
+    "chit": "0.x.x"
+  },
+  "chix": {
+    "name": "object",
+    "color": "rgb(255,255,255)"
+  },
+  "dependencies": {
+    "chix-flow": "psichi/chix-flow",
+    "fbpx": "psichi/fbpx",
+    "fbpx-chix": "psichi/fbpx-chix"
+  }
+}

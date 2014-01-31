@@ -1,0 +1,27 @@
+{
+  "name": "fbpx",
+  "ns": "chix",
+  "title": "FBPx",
+  "description": "FBP Parser",
+  "phrases": {
+    "active": "Parsing .fbp"
+  },
+  "require": {
+    "fbpx": "psichi/fbpx",
+    "fbpx-chix": "psichi/fbpx"
+  },
+  "ports": {
+    "input": {
+      "in": {
+        "title": "FBP Content",
+        "type": "string"
+      }
+    },
+    "output": {
+      "out": {
+        "title": "Flow JSON",
+        "type": "object"
+      }
+    }
+  }
+}

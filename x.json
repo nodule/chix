@@ -1,0 +1,84 @@
+{
+  "name": "object",
+  "description": "Chiχ for Chiχ",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/chix.git"
+  },
+  "dependencies": {
+    "chix-flow": "psichi/chix-flow",
+    "fbpx": "psichi/fbpx",
+    "fbpx-chix": "psichi/fbpx-chix"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "in1": {
+            "title": "Input",
+            "type": "any"
+          },
+          "in2": {
+            "title": "Input",
+            "type": "any"
+          },
+          "color": {
+            "title": "Color",
+            "type": "string"
+          }
+        },
+        "output": {
+          "out1": {
+            "title": "Out 1",
+            "type": "any"
+          },
+          "out2": {
+            "title": "Out 2",
+            "type": "any"
+          }
+        }
+      },
+      "require": {
+        "chix-flow": "psichi/chix-flow"
+      },
+      "phrases": {
+        "active": "Starting Actor"
+      },
+      "description": "Chix Actor",
+      "title": "Actor",
+      "ns": "chix",
+      "name": "actor",
+      "fn": "output = function (cb) {\n\n  var actor = chix_flow.Actor;\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.addMap(input.flow);\n  actor.addNodeDefinitions(input.nodeDefinitions);\n  actor.createNodes();\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n  }\n\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
+            "title": "FBP Content",
+            "type": "string"
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Flow JSON",
+            "type": "object"
+          }
+        }
+      },
+      "require": {
+        "fbpx": "psichi/fbpx",
+        "fbpx-chix": "psichi/fbpx"
+      },
+      "phrases": {
+        "active": "Parsing .fbp"
+      },
+      "description": "FBP Parser",
+      "title": "FBPx",
+      "ns": "chix",
+      "name": "fbpx",
+      "fn": "var p = new fbpx();\np.addRenderer(new fbpx_chix());\noutput.out = p.parse(input.in);\n"
+    }
+  ],
+  "twigs": []
+}

@@ -1,0 +1,38 @@
+{
+  "name": "actor",
+  "ns": "chix",
+  "title": "Actor",
+  "description": "Chix Actor",
+  "phrases": {
+    "active": "Starting Actor"
+  },
+  "require": {
+    "chix-flow": "psichi/chix-flow"
+  },
+  "ports": {
+    "input": {
+      "in1": {
+        "title": "Input",
+        "type": "any"
+      },
+      "in2": {
+        "title": "Input",
+        "type": "any"
+      },
+      "color": {
+        "title": "Color",
+        "type": "string"
+      }
+    },
+    "output": {
+      "out1": {
+        "title": "Out 1",
+        "type": "any"
+      },
+      "out2": {
+        "title": "Out 2",
+        "type": "any"
+      }
+    }
+  }
+}
