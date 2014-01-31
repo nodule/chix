@@ -11,17 +11,18 @@
   },
   "ports": {
     "input": {
-      "in1": {
-        "title": "Input",
+      "flow": {
+        "title": "Flow JSON",
+        "type": "object"
+      },
+      "defs": {
+        "title": "Node Definitions",
         "type": "any"
       },
-      "in2": {
-        "title": "Input",
-        "type": "any"
-      },
-      "color": {
-        "title": "Color",
-        "type": "string"
+      "iips": {
+        "title": "IIPs",
+        "type": "object",
+        "default": null
       }
     },
     "output": {

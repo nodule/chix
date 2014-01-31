@@ -15,7 +15,7 @@ output = function (cb) {
   });
 
   actor.addMap(input.flow);
-  actor.addNodeDefinitions(input.nodeDefinitions);
+  actor.addNodeDefinitions(input.defs);
   actor.createNodes();
   actor.run();
 

@@ -21,6 +21,10 @@
       "out": {
         "title": "Flow JSON",
         "type": "object"
+      },
+      "iips": {
+        "title": "IIPs",
+        "type": "any"
       }
     }
   }

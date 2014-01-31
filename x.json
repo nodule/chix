@@ -15,17 +15,18 @@
     {
       "ports": {
         "input": {
-          "in1": {
-            "title": "Input",
+          "flow": {
+            "title": "Flow JSON",
+            "type": "object"
+          },
+          "defs": {
+            "title": "Node Definitions",
             "type": "any"
           },
-          "in2": {
-            "title": "Input",
-            "type": "any"
-          },
-          "color": {
-            "title": "Color",
-            "type": "string"
+          "iips": {
+            "title": "IIPs",
+            "type": "object",
+            "default": null
           }
         },
         "output": {
@@ -49,7 +50,7 @@
       "title": "Actor",
       "ns": "chix",
       "name": "actor",
-      "fn": "output = function (cb) {\n\n  var actor = chix_flow.Actor;\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.addMap(input.flow);\n  actor.addNodeDefinitions(input.nodeDefinitions);\n  actor.createNodes();\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n  }\n\n};\n"
+      "fn": "output = function (cb) {\n\n  var actor = chix_flow.Actor;\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.addMap(input.flow);\n  actor.addNodeDefinitions(input.defs);\n  actor.createNodes();\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n  }\n\n};\n"
     },
     {
       "ports": {
@@ -63,6 +64,10 @@
           "out": {
             "title": "Flow JSON",
             "type": "object"
+          },
+          "iips": {
+            "title": "IIPs",
+            "type": "any"
           }
         }
       },
@@ -77,7 +82,7 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "var p = new fbpx();\np.addRenderer(new fbpx_chix());\noutput.out = p.parse(input.in);\n"
+      "fn": "var p = new fbpx();\nvar renderer = new fbpx_chix();\np.addRenderer(renderer);\n\noutput.out = p.parse(input.in);\n\nvar iips = renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
     }
   ],
   "twigs": []
