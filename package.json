@@ -19,7 +19,7 @@
     "chit": "0.x.x"
   },
   "chix": {
-    "name": "object",
+    "name": "chix",
     "color": "rgb(255,255,255)"
   },
   "dependencies": {
