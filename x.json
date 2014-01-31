@@ -68,7 +68,7 @@
       },
       "require": {
         "fbpx": "psichi/fbpx",
-        "fbpx-chix": "psichi/fbpx"
+        "fbpx-chix": "psichi/fbpx-chix"
       },
       "phrases": {
         "active": "Parsing .fbp"

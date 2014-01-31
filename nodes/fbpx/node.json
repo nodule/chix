@@ -8,7 +8,7 @@
   },
   "require": {
     "fbpx": "psichi/fbpx",
-    "fbpx-chix": "psichi/fbpx"
+    "fbpx-chix": "psichi/fbpx-chix"
   },
   "ports": {
     "input": {
