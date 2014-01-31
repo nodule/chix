@@ -1,0 +1,26 @@
+{
+  "name": "loaderRemote",
+  "ns": "chix",
+  "title": "Remote Loader",
+  "description": "A remote Node Definition loader for the Actor",
+  "phrases": {
+    "active": "Loading Remote Definitions"
+  },
+  "require": {
+    "chix-loader-remote": "psichi/chix-loader-remote"
+  },
+  "ports": {
+    "input": {
+      "flow": {
+        "title": "Flow JSON",
+        "type": "object"
+      }
+    },
+    "output": {
+      "out": {
+        "title": "Node Definitions",
+        "type": "object"
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@
   "dependencies": {
     "chix-flow": "psichi/chix-flow",
     "fbpx": "psichi/fbpx",
+    "chix-loader-remote": "psichi/chix-loader-remote",
     "fbpx-chix": "psichi/fbpx-chix"
   },
   "nodes": [
@@ -83,6 +84,33 @@
       "ns": "chix",
       "name": "fbpx",
       "fn": "var p = new fbpx();\nvar renderer = new fbpx_chix();\np.addRenderer(renderer);\n\noutput.out = p.parse(input.in);\n\nvar iips = renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "flow": {
+            "title": "Flow JSON",
+            "type": "object"
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Node Definitions",
+            "type": "object"
+          }
+        }
+      },
+      "require": {
+        "chix-loader-remote": "psichi/chix-loader-remote"
+      },
+      "phrases": {
+        "active": "Loading Remote Definitions"
+      },
+      "description": "A remote Node Definition loader for the Actor",
+      "title": "Remote Loader",
+      "ns": "chix",
+      "name": "loaderRemote",
+      "fn": "var lr = new chix_loader_remote();\noutput = [lr, 'load', input.flow];\n"
     }
   ],
   "twigs": []

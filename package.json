@@ -25,6 +25,7 @@
   "dependencies": {
     "chix-flow": "psichi/chix-flow",
     "fbpx": "psichi/fbpx",
+    "chix-loader-remote": "psichi/chix-loader-remote",
     "fbpx-chix": "psichi/fbpx-chix"
   }
 }
