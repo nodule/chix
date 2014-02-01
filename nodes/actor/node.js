@@ -1,6 +1,6 @@
 output = function (cb) {
 
-  var actor = chix_flow.Actor;
+  var actor = new chix_flow.Actor();
 
   actor.on('inputRequired', function (data) {
     cb({
