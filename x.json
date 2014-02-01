@@ -31,13 +31,9 @@
           }
         },
         "output": {
-          "out1": {
-            "title": "Out 1",
-            "type": "any"
-          },
-          "out2": {
-            "title": "Out 2",
-            "type": "any"
+          "error": {
+            "title": "Error",
+            "type": "object"
           }
         }
       },
