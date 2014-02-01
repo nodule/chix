@@ -1,0 +1,26 @@
+{
+  "name": "toDot",
+  "ns": "chix",
+  "title": "Convert JSON Flow to Dot",
+  "description": "Converts a JSON Flow to Dot format",
+  "phrases": {
+    "active": "Converting to dot"
+  },
+  "require": {
+    "chix-flow": "psichi/chix-flow"
+  },
+  "ports": {
+    "input": {
+      "in": {
+        "title": "Flow JSON",
+        "type": "object"
+      }
+    },
+    "output": {
+      "out": {
+        "title": "Dot Output",
+        "type": "object"
+      }
+    }
+  }
+}

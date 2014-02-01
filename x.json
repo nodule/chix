@@ -107,6 +107,33 @@
       "ns": "chix",
       "name": "loaderRemote",
       "fn": "var lr = new chix_loader_remote();\noutput = [lr, 'load', input.flow];\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
+            "title": "Flow JSON",
+            "type": "object"
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Dot Output",
+            "type": "object"
+          }
+        }
+      },
+      "require": {
+        "chix-flow": "psichi/chix-flow"
+      },
+      "phrases": {
+        "active": "Converting to dot"
+      },
+      "description": "Converts a JSON Flow to Dot format",
+      "title": "Convert JSON Flow to Dot",
+      "ns": "chix",
+      "name": "toDot",
+      "fn": "function writeLine(link, graph, map, titles) {\n\n  var source_name = link.source,\n    target_name = link.target;\n\n  graph.push([\n    '  ',\n    source_name,\n    ' -> ',\n    target_name,\n    ' [label=\"out:',\n    link.out,\n    '|in:',\n    link.in,\n    '\"];'\n  ].join(''));\n\n  titles[source_name] = [\n    '  ',\n    source_name,\n    ' ',\n    '[label=\"',\n    source_name.replace('_', ':'),\n    '\"];'\n  ].join('');\n\n  titles[target_name] = [\n    '  ',\n    target_name,\n    ' ',\n    '[label=\"',\n    target_name.replace('_', ':'),\n    '\"];'\n  ].join('');\n\n}\n\nfunction toDot(map) {\n\n  var graph = [], key, titles = {}, i;\n\n  graph.push('digraph {');\n  graph.push('  label=\"' + map.description + '\";');\n  for(i = 0; i < map.links.length; i++) {\n    writeLine(\n      map.links[i],\n      graph,\n      map,\n      titles\n    );\n  }\n\n  for (key in titles) {\n    if(titles.hasOwnProperty(key)) {\n      graph.push(titles[key]);\n    }\n  }\n\n  graph.push('}');\n\n  return graph.join('\\n');\n}\n\noutput.out = toDot(input.flow)\n"
     }
   ],
   "twigs": []
