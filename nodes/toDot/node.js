@@ -61,4 +61,4 @@ function toDot(map) {
   return graph.join('\n');
 }
 
-output.out = toDot(input.flow)
+output.out = toDot(input.in)
