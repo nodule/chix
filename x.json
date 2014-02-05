@@ -38,7 +38,7 @@
         }
       },
       "require": {
-        "chix-flow": "psichi/chix-flow"
+        "chix-flow": "0.x.x"
       },
       "phrases": {
         "active": "Starting Actor"
@@ -69,8 +69,8 @@
         }
       },
       "require": {
-        "fbpx": "psichi/fbpx",
-        "fbpx-chix": "psichi/fbpx-chix"
+        "fbpx": "1.x.x",
+        "fbpx-chix": "1.x.x"
       },
       "phrases": {
         "active": "Parsing .fbp"
@@ -97,7 +97,7 @@
         }
       },
       "require": {
-        "chix-loader-remote": "psichi/chix-loader-remote"
+        "chix-loader-remote": "0.x.x"
       },
       "phrases": {
         "active": "Loading Remote Definitions"
@@ -124,7 +124,7 @@
         }
       },
       "require": {
-        "chix-flow": "psichi/chix-flow"
+        "chix-flow": "0.x.x"
       },
       "phrases": {
         "active": "Converting to dot"

@@ -7,8 +7,8 @@
     "active": "Parsing .fbp"
   },
   "require": {
-    "fbpx": "psichi/fbpx",
-    "fbpx-chix": "psichi/fbpx-chix"
+    "fbpx": "1.x.x",
+    "fbpx-chix": "1.x.x"
   },
   "ports": {
     "input": {

@@ -7,7 +7,7 @@
     "active": "Loading Remote Definitions"
   },
   "require": {
-    "chix-loader-remote": "psichi/chix-loader-remote"
+    "chix-loader-remote": "0.x.x"
   },
   "ports": {
     "input": {
