@@ -23,9 +23,9 @@
     "color": "rgb(255,255,255)"
   },
   "dependencies": {
-    "chix-flow": "psichi/chix-flow",
-    "fbpx": "psichi/fbpx",
-    "chix-loader-remote": "psichi/chix-loader-remote",
-    "fbpx-chix": "psichi/fbpx-chix"
+    "chix-flow": "0.x.x",
+    "fbpx": "1.x.x",
+    "chix-loader-remote": "0.x.x",
+    "fbpx-chix": "0.x.x"
   }
 }
