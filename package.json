@@ -26,6 +26,6 @@
     "chix-flow": "0.x.x",
     "fbpx": "1.x.x",
     "chix-loader-remote": "0.x.x",
-    "fbpx-chix": "0.x.x"
+    "fbpx-chix": "1.x.x"
   }
 }
