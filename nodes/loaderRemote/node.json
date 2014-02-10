@@ -17,9 +17,30 @@
       }
     },
     "output": {
-      "out": {
-        "title": "Node Definitions",
+      "error": {
+        "title": "Error",
         "type": "object"
+      },
+      "results": {
+        "title": "Results",
+        "type": "object",
+        "properties": {
+           "requires": {
+              "type": "object",
+              "title": "Requires",
+              "description": "The requires needed for this flow and it's subflows"
+           },
+           "nodeDefinitions": {
+              "type": "object",
+              "title": "Node Definitions",
+              "description": "The Node Definitions in use by this flow and it's subflows"
+           },
+           "nodes": {
+              "type": "object",
+              "title": "Nodes",
+              "description": "All Nodes existing nodes for this flow and it's subflows"
+           }
+        }
       }
     }
   }
