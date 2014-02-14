@@ -7,7 +7,7 @@
     "active": "Converting to dot"
   },
   "require": {
-    "chix-flow": "0.x.x"
+    "chix-flow-todot": "0.x.x"
   },
   "ports": {
     "input": {

@@ -1,1 +1,1 @@
-output.out = chix_flow.toDot(input.in)
+output.out = chix_flow_todot(input.in)
