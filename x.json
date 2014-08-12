@@ -10,7 +10,8 @@
     "chix-flow": "0.x.x",
     "fbpx": "1.x.x",
     "chix-loader-remote": "0.x.x",
-    "fbpx-chix": "0.x.x"
+    "fbpx-chix": "1.x.x",
+    "chix-flow-todot": "0.x.x"
   },
   "nodes": [
     {
@@ -70,7 +71,7 @@
       },
       "require": {
         "fbpx": "1.x.x",
-        "fbpx-chix": "0.x.x"
+        "fbpx-chix": "1.x.x"
       },
       "phrases": {
         "active": "Parsing .fbp"
@@ -90,9 +91,30 @@
           }
         },
         "output": {
-          "out": {
-            "title": "Node Definitions",
+          "error": {
+            "title": "Error",
             "type": "object"
+          },
+          "results": {
+            "title": "Results",
+            "type": "object",
+            "properties": {
+              "requires": {
+                "type": "object",
+                "title": "Requires",
+                "description": "The requires needed for this flow and it's subflows"
+              },
+              "nodeDefinitions": {
+                "type": "object",
+                "title": "Node Definitions",
+                "description": "The Node Definitions in use by this flow and it's subflows"
+              },
+              "nodes": {
+                "type": "object",
+                "title": "Nodes",
+                "description": "All Nodes existing nodes for this flow and it's subflows"
+              }
+            }
           }
         }
       },
@@ -124,7 +146,7 @@
         }
       },
       "require": {
-        "chix-flow": "0.x.x"
+        "chix-flow-todot": "0.x.x"
       },
       "phrases": {
         "active": "Converting to dot"
@@ -133,7 +155,7 @@
       "title": "Convert JSON Flow to Dot",
       "ns": "chix",
       "name": "toDot",
-      "fn": "output.out = chix_flow.toDot(input.in)\n"
+      "fn": "output.out = chix_flow_todot(input.in)\n"
     }
   ],
   "twigs": []
