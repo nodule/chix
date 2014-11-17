@@ -6,9 +6,6 @@
   "phrases": {
     "active": "Loading Remote Definitions"
   },
-  "require": {
-    "chix-loader-remote": "0.x.x"
-  },
   "ports": {
     "input": {
       "flow": {
@@ -25,23 +22,28 @@
         "title": "Results",
         "type": "object",
         "properties": {
-           "requires": {
-              "type": "object",
-              "title": "Requires",
-              "description": "The requires needed for this flow and it's subflows"
-           },
-           "nodeDefinitions": {
-              "type": "object",
-              "title": "Node Definitions",
-              "description": "The Node Definitions in use by this flow and it's subflows"
-           },
-           "nodes": {
-              "type": "object",
-              "title": "Nodes",
-              "description": "All Nodes existing nodes for this flow and it's subflows"
-           }
+          "requires": {
+            "type": "object",
+            "title": "Requires",
+            "description": "The requires needed for this flow and it's subflows"
+          },
+          "nodeDefinitions": {
+            "type": "object",
+            "title": "Node Definitions",
+            "description": "The Node Definitions in use by this flow and it's subflows"
+          },
+          "nodes": {
+            "type": "object",
+            "title": "Nodes",
+            "description": "All Nodes existing nodes for this flow and it's subflows"
+          }
         }
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "chix-loader-remote": "0.x.x"
     }
   }
 }

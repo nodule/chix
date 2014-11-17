@@ -6,9 +6,6 @@
   "phrases": {
     "active": "Converting to dot"
   },
-  "require": {
-    "chix-flow-todot": "0.x.x"
-  },
   "ports": {
     "input": {
       "in": {
@@ -21,6 +18,11 @@
         "title": "Dot Output",
         "type": "object"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "chix-flow-todot": "0.x.x"
     }
   }
 }

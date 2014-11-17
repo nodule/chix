@@ -6,9 +6,6 @@
   "phrases": {
     "active": "Starting Actor"
   },
-  "require": {
-    "chix-flow": "0.x.x"
-  },
   "ports": {
     "input": {
       "flow": {
@@ -30,6 +27,11 @@
         "title": "Error",
         "type": "object"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "chix-flow": "0.x.x"
     }
   }
 }

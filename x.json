@@ -15,6 +15,11 @@
   },
   "nodes": [
     {
+      "dependencies": {
+        "npm": {
+          "chix-flow": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "flow": {
@@ -38,9 +43,6 @@
           }
         }
       },
-      "require": {
-        "chix-flow": "0.x.x"
-      },
       "phrases": {
         "active": "Starting Actor"
       },
@@ -51,6 +53,12 @@
       "fn": "output = function (cb) {\n\n  var actor = new chix_flow.Actor();\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.addMap(input.flow);\n  actor.addNodeDefinitions(input.defs);\n  actor.createNodes();\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n  }\n\n};\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "fbpx": "1.x.x",
+          "fbpx-chix": "1.x.x"
+        }
+      },
       "ports": {
         "input": {
           "in": {
@@ -69,10 +77,6 @@
           }
         }
       },
-      "require": {
-        "fbpx": "1.x.x",
-        "fbpx-chix": "1.x.x"
-      },
       "phrases": {
         "active": "Parsing .fbp"
       },
@@ -83,6 +87,11 @@
       "fn": "var p = new fbpx();\nvar renderer = new fbpx_chix();\np.addRenderer(renderer);\n\noutput.out = p.parse(input.in);\n\nvar iips = renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "chix-loader-remote": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "flow": {
@@ -118,9 +127,6 @@
           }
         }
       },
-      "require": {
-        "chix-loader-remote": "0.x.x"
-      },
       "phrases": {
         "active": "Loading Remote Definitions"
       },
@@ -131,6 +137,11 @@
       "fn": "var lr = new chix_loader_remote();\noutput = [lr, 'load', input.flow];\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "chix-flow-todot": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "in": {
@@ -144,9 +155,6 @@
             "type": "object"
           }
         }
-      },
-      "require": {
-        "chix-flow-todot": "0.x.x"
       },
       "phrases": {
         "active": "Converting to dot"

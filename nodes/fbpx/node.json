@@ -6,10 +6,6 @@
   "phrases": {
     "active": "Parsing .fbp"
   },
-  "require": {
-    "fbpx": "1.x.x",
-    "fbpx-chix": "1.x.x"
-  },
   "ports": {
     "input": {
       "in": {
@@ -26,6 +22,12 @@
         "title": "IIPs",
         "type": "any"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "fbpx": "1.x.x",
+      "fbpx-chix": "1.x.x"
     }
   }
 }
