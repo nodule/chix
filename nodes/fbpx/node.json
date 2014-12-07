@@ -27,7 +27,7 @@
   "dependencies": {
     "npm": {
       "fbpx": "1.x.x",
-      "fbpx-chix": "1.x.x"
+      "fbpx/chix": "1.x.x"
     }
   }
 }

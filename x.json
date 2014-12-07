@@ -56,7 +56,7 @@
       "dependencies": {
         "npm": {
           "fbpx": "1.x.x",
-          "fbpx-chix": "1.x.x"
+          "fbpx/chix": "1.x.x"
         }
       },
       "ports": {
@@ -84,7 +84,7 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "var p = new fbpx();\nvar renderer = new fbpx_chix();\np.addRenderer(renderer);\n\noutput.out = p.parse(input.in);\n\nvar iips = renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
+      "fn": "var p = new fbpx();\nvar renderer = new chix();\np.addRenderer(renderer);\n\noutput.out = p.parse(input.in);\n\nvar iips = renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
     },
     {
       "dependencies": {

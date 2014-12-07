@@ -1,5 +1,5 @@
 var p = new fbpx();
-var renderer = new fbpx_chix();
+var renderer = new chix();
 p.addRenderer(renderer);
 
 output.out = p.parse(input.in);
