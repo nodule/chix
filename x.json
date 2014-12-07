@@ -82,7 +82,7 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "var p = new chix();\noutput.out = p.parse(input.in);\n\nvar iips = renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
+      "fn": "var p = new chix();\noutput.out = p.parse(input.in);\n\nvar iips = p.renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
     },
     {
       "dependencies": {
