@@ -1,7 +1,4 @@
-var p = new fbpx();
-var renderer = new chix();
-p.addRenderer(renderer);
-
+var p = new chix();
 output.out = p.parse(input.in);
 
 var iips = renderer.getIIPs();
