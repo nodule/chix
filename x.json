@@ -9,8 +9,7 @@
   "dependencies": {
     "chix-flow": "0.x.x",
     "fbpx": "1.x.x",
-    "chix-loader-remote": "0.x.x",
-    "fbpx-chix": "1.x.x",
+    "chix-loader": "0.x.x",
     "chix-flow-todot": "0.x.x"
   },
   "nodes": [
@@ -134,7 +133,7 @@
       "title": "Remote Loader",
       "ns": "chix",
       "name": "loaderRemote",
-      "fn": "var lr = new chix_loader_remote();\noutput = [lr, 'load', input.flow];\n"
+      "fn": "var lr = new loader_remote();\noutput = [lr, 'load', input.flow];\n"
     },
     {
       "dependencies": {
