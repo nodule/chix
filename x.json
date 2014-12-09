@@ -21,6 +21,26 @@
       },
       "ports": {
         "input": {
+          "actor": {
+            "title": "Actor",
+            "type": "Actor",
+            "default": null
+          },
+          "loader": {
+            "title": "Loader",
+            "type": "Loader",
+            "default": null
+          },
+          "io": {
+            "title": "IO Handler",
+            "type": "IOMapHandler",
+            "default": null
+          },
+          "pm": {
+            "title": "Process Manager",
+            "type": "ProcessManager",
+            "default": null
+          },
           "flow": {
             "title": "Flow JSON",
             "type": "object"
@@ -36,6 +56,26 @@
           }
         },
         "output": {
+          "actor": {
+            "title": "Actor",
+            "type": "Actor"
+          },
+          "addNode": {
+            "title": "Node added",
+            "type": "xNode"
+          },
+          "removeNode": {
+            "title": "Node removed",
+            "type": "xNode"
+          },
+          "addLink": {
+            "title": "Link added",
+            "type": "xLink"
+          },
+          "removeLink": {
+            "title": "Link removed",
+            "type": "xLink"
+          },
           "error": {
             "title": "Error",
             "type": "object"
@@ -49,7 +89,7 @@
       "title": "Actor",
       "ns": "chix",
       "name": "actor",
-      "fn": "output = function (cb) {\n\n  var actor = new chix_flow.Actor();\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.addMap(input.flow);\n  actor.addNodeDefinitions(input.defs);\n  actor.createNodes();\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n  }\n\n};\n"
+      "fn": "output = function (cb) {\n\n  var actor = input.actor || new chix_flow.Actor();\n\n  if (input.loader) {\n    actor.addLoader(input.loader);\n  }\n\n  if (input.pm) {\n    actor.addProcessManager(input.pm);\n  }\n\n  if (input.io) {\n    actor.addIoHandler(input.io);\n  }\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('addNode', function (event) {\n    cb({\n      addNode: event.node\n    });\n  });\n\n  actor.on('removeNode', function (event) {\n    cb({\n      removeNode: event.node\n    });\n  });\n\n  actor.on('addLink', function (link) {\n    cb({\n      addLink: link\n    });\n  });\n\n  actor.on('removeLink', function (link) {\n    cb({\n      removeLink: link\n    });\n  });\n\n  actor.ioHandler.on('connect', function (link) {\n    cb({\n      connectLink: link\n    });\n  });\n\n  actor.ioHandler.on('disconnect', function (link) {\n    cb({\n      disconnectLink: link\n    });\n  });\n\n  // not really useful I guess\n  /*\n  actor.ioHandler.on('data', function (link) {\n    cb({\n      disconnectLink: link\n    });\n  });\n  */\n\n  actor.addMap(input.flow);\n\n  // is done by loader now.\n  // actor.addNodeDefinitions(input.defs);\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n    actor.push();\n  }\n\n};\n"
     },
     {
       "dependencies": {
@@ -82,7 +122,7 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "var p = new chix();\noutput.out = p.parse(input.in);\n\nvar iips = p.renderer.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
+      "fn": "var p = new chix();\noutput.out = p.parse(input.in);\n\nvar iips = p.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
     },
     {
       "dependencies": {

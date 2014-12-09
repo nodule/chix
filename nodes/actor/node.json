@@ -8,6 +8,26 @@
   },
   "ports": {
     "input": {
+      "actor": {
+        "title": "Actor",
+        "type": "Actor",
+        "default": null
+      },
+      "loader": {
+        "title": "Loader",
+        "type": "Loader",
+        "default": null
+      },
+      "io": {
+        "title": "IO Handler",
+        "type": "IOMapHandler",
+        "default": null
+      },
+      "pm": {
+        "title": "Process Manager",
+        "type": "ProcessManager",
+        "default": null
+      },
       "flow": {
         "title": "Flow JSON",
         "type": "object"
@@ -23,6 +43,26 @@
       }
     },
     "output": {
+      "actor": {
+        "title": "Actor",
+        "type": "Actor"
+      },
+      "addNode": {
+        "title": "Node added",
+        "type": "xNode"
+      },
+      "removeNode": {
+        "title": "Node removed",
+        "type": "xNode"
+      },
+      "addLink": {
+        "title": "Link added",
+        "type": "xLink"
+      },
+      "removeLink": {
+        "title": "Link removed",
+        "type": "xLink"
+      },
       "error": {
         "title": "Error",
         "type": "object"
