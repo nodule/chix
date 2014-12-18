@@ -92,6 +92,50 @@
       "fn": "output = function (cb) {\n\n  var actor = input.actor || new chix_flow.Actor();\n\n  if (input.loader) {\n    actor.addLoader(input.loader);\n  }\n\n  if (input.pm) {\n    actor.addProcessManager(input.pm);\n  }\n\n  if (input.io) {\n    actor.addIoHandler(input.io);\n  }\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('addNode', function (event) {\n    cb({\n      addNode: event.node\n    });\n  });\n\n  actor.on('removeNode', function (event) {\n    cb({\n      removeNode: event.node\n    });\n  });\n\n  actor.on('addLink', function (link) {\n    cb({\n      addLink: link\n    });\n  });\n\n  actor.on('removeLink', function (link) {\n    cb({\n      removeLink: link\n    });\n  });\n\n  actor.ioHandler.on('connect', function (link) {\n    cb({\n      connectLink: link\n    });\n  });\n\n  actor.ioHandler.on('disconnect', function (link) {\n    cb({\n      disconnectLink: link\n    });\n  });\n\n  // not really useful I guess\n  /*\n  actor.ioHandler.on('data', function (link) {\n    cb({\n      disconnectLink: link\n    });\n  });\n  */\n\n  actor.addMap(input.flow);\n\n  // is done by loader now.\n  // actor.addNodeDefinitions(input.defs);\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n    actor.push();\n  }\n\n};\n"
     },
     {
+      "ports": {
+        "input": {
+          "option": {
+            "title": "Options",
+            "type": "object",
+            "properties": {
+              "protocol": {
+                "type": "string",
+                "default": "noflo-runtime"
+              },
+              "host": {
+                "type": "string",
+                "default": "localhost"
+              },
+              "port": {
+                "type": "number",
+                "default": 9000
+              }
+            }
+          }
+        },
+        "output": {
+          "out": {
+            "title": "out",
+            "type": "string"
+          }
+        }
+      },
+      "dependencies": {
+        "npm": {
+          "chix-runtime/lib/runtime": "0.x.x",
+          "chix-runtime/lib/transport/websocketBrowser": "0.x.x"
+        }
+      },
+      "phrases": {
+        "active": "Creating FBP Websocket Client"
+      },
+      "description": "CSS",
+      "title": "FBP Protocol Websocket Client",
+      "ns": "chix",
+      "name": "client",
+      "fn": "var transport = new websocketbrowser(input.options);\n\n// protocol is emitted on receive\n// connected, disconnected is emitted.\noutput = function() {\n  transport.on('send', function(payload) {\n    output({out: payload});\n  });\n};\n"
+    },
+    {
       "dependencies": {
         "npm": {
           "fbpx/chix": "1.x.x"

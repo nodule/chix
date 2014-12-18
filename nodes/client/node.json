@@ -1,0 +1,43 @@
+{
+  "name": "client",
+  "ns": "chix",
+  "title": "FBP Protocol Websocket Client",
+  "description": "CSS",
+  "phrases": {
+    "active": "Creating FBP Websocket Client"
+  },
+  "dependencies": {
+    "npm": {
+       "chix-runtime/lib/runtime": "0.x.x",
+       "chix-runtime/lib/transport/websocketBrowser": "0.x.x"
+    }
+  },
+  "ports": {
+    "input": {
+      "option": {
+        "title": "Options",
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "default": "noflo-runtime"
+          },
+          "host": {
+            "type": "string",
+            "default": "localhost"
+          },
+          "port": {
+            "type": "number",
+            "default": 9000
+          }
+         }
+      }
+    },
+    "output": {
+      "out": {
+        "title": "out",
+        "type": "string"
+      }
+    }
+  }
+}
