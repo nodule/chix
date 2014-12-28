@@ -1,8 +1,13 @@
-var p = new chix();
-output.out = p.parse(input.in);
+output = function() {
+  var p = new chix();
 
-var iips = p.getIIPs();
+  output({
+    out: p.parse(input.in)
+  });
 
-if(iips) {
-  output.iips = iips;
-}
+  var iips = p.getIIPs();
+
+  if(iips) {
+    output({iips: iips});
+  }
+};

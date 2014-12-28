@@ -1,5 +1,5 @@
 {
-  "name": "nodule-chix",
+  "name": "chix-chix",
   "description": "Chiχ for Chiχ",
   "author": "Rob Halff <rob.halff@gmail.com>",
   "version": "0.0.2",
@@ -11,7 +11,6 @@
   "engines": {
     "node": ">=0.6.0"
   },
-  "main": "x",
   "scripts": {
     "test": "chit -r"
   },
@@ -24,8 +23,9 @@
   },
   "dependencies": {
     "chix-flow": "0.x.x",
-    "fbpx": "1.x.x",
+    "chix-flow-todot": "0.x.x",
     "chix-loader": "0.x.x",
-    "chix-flow-todot": "0.x.x"
+    "chix-runtime": "^0.1.0",
+    "fbpx": "^1.1.10"
   }
 }

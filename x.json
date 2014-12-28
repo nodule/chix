@@ -8,9 +8,10 @@
   },
   "dependencies": {
     "chix-flow": "0.x.x",
-    "fbpx": "1.x.x",
+    "chix-flow-todot": "0.x.x",
     "chix-loader": "0.x.x",
-    "chix-flow-todot": "0.x.x"
+    "chix-runtime": "^0.1.0",
+    "fbpx": "^1.1.10"
   },
   "nodes": [
     {
@@ -94,7 +95,7 @@
     {
       "ports": {
         "input": {
-          "option": {
+          "options": {
             "title": "Options",
             "type": "object",
             "properties": {
@@ -133,7 +134,7 @@
       "title": "FBP Protocol Websocket Client",
       "ns": "chix",
       "name": "client",
-      "fn": "var transport = new websocketbrowser(input.options);\n\n// protocol is emitted on receive\n// connected, disconnected is emitted.\noutput = function() {\n  transport.on('send', function(payload) {\n    output({out: payload});\n  });\n};\n"
+      "fn": "// protocol is emitted on receive\n// connected, disconnected is emitted.\noutput = function() {\n  var transport = new websocketbrowser(input.options);\n  transport.on('send', function(payload) {\n    output({out: payload});\n  });\n};\n"
     },
     {
       "dependencies": {
@@ -166,12 +167,12 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "var p = new chix();\noutput.out = p.parse(input.in);\n\nvar iips = p.getIIPs();\n\nif(iips) {\n  output.iips = iips;\n}\n"
+      "fn": "output = function() {\n  var p = new chix();\n\n  output({\n    out: p.parse(input.in)\n  });\n\n  var iips = p.getIIPs();\n\n  if(iips) {\n    output({iips: iips});\n  }\n};\n"
     },
     {
       "dependencies": {
         "npm": {
-          "chix-loader-remote": "0.x.x"
+          "chix-loader/remote": "0.x.x"
         }
       },
       "ports": {
@@ -186,7 +187,7 @@
             "title": "Error",
             "type": "object"
           },
-          "results": {
+          "out": {
             "title": "Results",
             "type": "object",
             "properties": {
@@ -199,11 +200,6 @@
                 "type": "object",
                 "title": "Node Definitions",
                 "description": "The Node Definitions in use by this flow and it's subflows"
-              },
-              "nodes": {
-                "type": "object",
-                "title": "Nodes",
-                "description": "All Nodes existing nodes for this flow and it's subflows"
               }
             }
           }
@@ -216,7 +212,7 @@
       "title": "Remote Loader",
       "ns": "chix",
       "name": "loaderRemote",
-      "fn": "var lr = new loader_remote();\noutput = [lr, 'load', input.flow];\n"
+      "fn": "output = function() {\n  var lr = new remote();\n  lr.load(input.flow, function(err, results) {\n    if(err) {\n      output({error: err});\n    } else {\n      output({out: results});\n    }\n    done();\n  });\n};\n"
     },
     {
       "dependencies": {
@@ -245,7 +241,7 @@
       "title": "Convert JSON Flow to Dot",
       "ns": "chix",
       "name": "toDot",
-      "fn": "output.out = chix_flow_todot(input.in)\n"
+      "fn": "on.input.in = function() {\n  output({out: chix_flow_todot(input.in)});\n};\n"
     }
   ],
   "twigs": []

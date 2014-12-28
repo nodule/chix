@@ -18,7 +18,7 @@
         "title": "Error",
         "type": "object"
       },
-      "results": {
+      "out": {
         "title": "Results",
         "type": "object",
         "properties": {
@@ -31,11 +31,6 @@
             "type": "object",
             "title": "Node Definitions",
             "description": "The Node Definitions in use by this flow and it's subflows"
-          },
-          "nodes": {
-            "type": "object",
-            "title": "Nodes",
-            "description": "All Nodes existing nodes for this flow and it's subflows"
           }
         }
       }
@@ -43,7 +38,7 @@
   },
   "dependencies": {
     "npm": {
-      "chix-loader-remote": "0.x.x"
+      "chix-loader/remote": "0.x.x"
     }
   }
 }

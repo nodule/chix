@@ -14,7 +14,7 @@
   },
   "ports": {
     "input": {
-      "option": {
+      "options": {
         "title": "Options",
         "type": "object",
         "properties": {
