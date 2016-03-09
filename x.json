@@ -139,7 +139,7 @@
     {
       "dependencies": {
         "npm": {
-          "fbpx/chix": "1.x.x"
+          "fbpx/chix": "latest"
         }
       },
       "ports": {
@@ -167,7 +167,7 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "output = function() {\n  var p = new chix();\n\n  output({\n    out: p.parse(input.in)\n  });\n\n  var iips = p.getIIPs();\n\n  if(iips) {\n    output({iips: iips});\n  }\n};\n"
+      "fn": "output = function() {\n  var p = new chix();\n\n  cb({\n    out: p.parse(input.in)\n  });\n\n  var iips = p.getIIPs();\n\n  if(iips) {\n    cb({iips: iips});\n  }\n};\n"
     },
     {
       "dependencies": {

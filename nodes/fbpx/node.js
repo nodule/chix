@@ -1,13 +1,13 @@
 output = function() {
   var p = new chix();
 
-  output({
+  cb({
     out: p.parse(input.in)
   });
 
   var iips = p.getIIPs();
 
   if(iips) {
-    output({iips: iips});
+    cb({iips: iips});
   }
 };
