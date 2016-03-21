@@ -3,6 +3,6 @@
 output = function() {
   var transport = new websocketbrowser($.options);
   transport.on('send', function(payload) {
-    output({out: payload});
+    output({out: $.create(payload)});
   });
 };

@@ -16,49 +16,49 @@ output = function (cb) {
 
   actor.on('inputRequired', function (val) {
     cb({
-      error: val
+      error: $.create(val)
     });
   });
 
   actor.on('error', function (val) {
     cb({
-      error: val
+      error: $.create(val)
     });
   });
 
   actor.on('addNode', function (event) {
     cb({
-      addNode: event.node
+      addNode: $.create(event.node)
     });
   });
 
   actor.on('removeNode', function (event) {
     cb({
-      removeNode: event.node
+      removeNode: $.create(event.node)
     });
   });
 
   actor.on('addLink', function (link) {
     cb({
-      addLink: link
+      addLink: $.create(link)
     });
   });
 
   actor.on('removeLink', function (link) {
     cb({
-      removeLink: link
+      removeLink: $.create(link)
     });
   });
 
   actor.ioHandler.on('connect', function (link) {
     cb({
-      connectLink: link
+      connectLink: $.create(link)
     });
   });
 
   actor.ioHandler.on('disconnect', function (link) {
     cb({
-      disconnectLink: link
+      disconnectLink: $.create(link)
     });
   });
 
@@ -66,7 +66,7 @@ output = function (cb) {
   /*
   actor.ioHandler.on('data', function (link) {
     cb({
-      disconnectLink: link
+      disconnectLink: $.create(link)
     });
   });
   */

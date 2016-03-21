@@ -8,6 +8,6 @@ output = function() {
   var iips = p.getIIPs();
 
   if(iips) {
-    cb({iips: iips});
+    cb({iips: $.create(iips)});
   }
 };
