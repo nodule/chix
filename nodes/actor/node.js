@@ -1,17 +1,17 @@
 output = function (cb) {
 
-  var actor = input.actor || new chix_flow.Actor();
+  var actor = $.actor || new chix_flow.Actor();
 
-  if (input.loader) {
-    actor.addLoader(input.loader);
+  if ($.loader) {
+    actor.addLoader($.loader);
   }
 
-  if (input.pm) {
-    actor.addProcessManager(input.pm);
+  if ($.pm) {
+    actor.addProcessManager($.pm);
   }
 
-  if (input.io) {
-    actor.addIoHandler(input.io);
+  if ($.io) {
+    actor.addIoHandler($.io);
   }
 
   actor.on('inputRequired', function (val) {
@@ -71,14 +71,14 @@ output = function (cb) {
   });
   */
 
-  actor.addMap(input.flow);
+  actor.addMap($.flow);
 
   // is done by loader now.
-  // actor.addNodeDefinitions(input.defs);
+  // actor.addNodeDefinitions($.defs);
   actor.run();
 
-  if (input.iips) {
-    actor.sendIIPs(input.iips);
+  if ($.iips) {
+    actor.sendIIPs($.iips);
     actor.push();
   }
 

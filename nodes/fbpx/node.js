@@ -2,7 +2,7 @@ output = function() {
   var p = new chix();
 
   cb({
-    out: p.parse(input.in)
+    out: p.parse($.in)
   });
 
   var iips = p.getIIPs();
