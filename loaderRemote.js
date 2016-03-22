@@ -41,17 +41,17 @@ module.exports = {
       "chix-loader/remote": "##chix-loader/remote##"
     }
   },
-  fn: function loaderRemote(input, output, state, done, cb, on, remote) {
+  fn: function loaderRemote(input, $, output, state, done, cb, on, remote) {
     var r = function() {
       var lr = new remote();
-      lr.load(input.flow, function(err, results) {
+      lr.load($.flow, function(err, results) {
         if (err) {
           output({
-            error: err
+            error: $.create(err)
           });
         } else {
           output({
-            out: results
+            out: $.create(results)
           });
         }
         done();

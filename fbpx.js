@@ -29,19 +29,19 @@ module.exports = {
       "fbpx/chix": "##fbpx/chix##"
     }
   },
-  fn: function fbpx(input, output, state, done, cb, on, chix) {
+  fn: function fbpx(input, $, output, state, done, cb, on, chix) {
     var r = function() {
       var p = new chix();
 
       output({
-        out: p.parse(input.in)
+        out: p.parse($.in)
       });
 
       var iips = p.getIIPs();
 
       if (iips) {
         output({
-          iips: iips
+          iips: $.create(iips)
         });
       }
     }.call(this);

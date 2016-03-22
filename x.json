@@ -90,7 +90,7 @@
       "title": "Actor",
       "ns": "chix",
       "name": "actor",
-      "fn": "output = function (cb) {\n\n  var actor = input.actor || new chix_flow.Actor();\n\n  if (input.loader) {\n    actor.addLoader(input.loader);\n  }\n\n  if (input.pm) {\n    actor.addProcessManager(input.pm);\n  }\n\n  if (input.io) {\n    actor.addIoHandler(input.io);\n  }\n\n  actor.on('inputRequired', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('error', function (data) {\n    cb({\n      error: data\n    });\n  });\n\n  actor.on('addNode', function (event) {\n    cb({\n      addNode: event.node\n    });\n  });\n\n  actor.on('removeNode', function (event) {\n    cb({\n      removeNode: event.node\n    });\n  });\n\n  actor.on('addLink', function (link) {\n    cb({\n      addLink: link\n    });\n  });\n\n  actor.on('removeLink', function (link) {\n    cb({\n      removeLink: link\n    });\n  });\n\n  actor.ioHandler.on('connect', function (link) {\n    cb({\n      connectLink: link\n    });\n  });\n\n  actor.ioHandler.on('disconnect', function (link) {\n    cb({\n      disconnectLink: link\n    });\n  });\n\n  // not really useful I guess\n  /*\n  actor.ioHandler.on('data', function (link) {\n    cb({\n      disconnectLink: link\n    });\n  });\n  */\n\n  actor.addMap(input.flow);\n\n  // is done by loader now.\n  // actor.addNodeDefinitions(input.defs);\n  actor.run();\n\n  if (input.iips) {\n    actor.sendIIPs(input.iips);\n    actor.push();\n  }\n\n};\n"
+      "fn": "output = function (cb) {\n\n  var actor = $.actor || new chix_flow.Actor();\n\n  if ($.loader) {\n    actor.addLoader($.loader);\n  }\n\n  if ($.pm) {\n    actor.addProcessManager($.pm);\n  }\n\n  if ($.io) {\n    actor.addIoHandler($.io);\n  }\n\n  actor.on('inputRequired', function (val) {\n    cb({\n      error: $.create(val)\n    });\n  });\n\n  actor.on('error', function (val) {\n    cb({\n      error: $.create(val)\n    });\n  });\n\n  actor.on('addNode', function (event) {\n    cb({\n      addNode: $.create(event.node)\n    });\n  });\n\n  actor.on('removeNode', function (event) {\n    cb({\n      removeNode: $.create(event.node)\n    });\n  });\n\n  actor.on('addLink', function (link) {\n    cb({\n      addLink: $.create(link)\n    });\n  });\n\n  actor.on('removeLink', function (link) {\n    cb({\n      removeLink: $.create(link)\n    });\n  });\n\n  actor.ioHandler.on('connect', function (link) {\n    cb({\n      connectLink: $.create(link)\n    });\n  });\n\n  actor.ioHandler.on('disconnect', function (link) {\n    cb({\n      disconnectLink: $.create(link)\n    });\n  });\n\n  // not really useful I guess\n  /*\n  actor.ioHandler.on('data', function (link) {\n    cb({\n      disconnectLink: $.create(link)\n    });\n  });\n  */\n\n  actor.addMap($.flow);\n\n  // is done by loader now.\n  // actor.addNodeDefinitions($.defs);\n  actor.run();\n\n  if ($.iips) {\n    actor.sendIIPs($.iips);\n    actor.push();\n  }\n\n};\n"
     },
     {
       "ports": {
@@ -134,7 +134,7 @@
       "title": "FBP Protocol Websocket Client",
       "ns": "chix",
       "name": "client",
-      "fn": "// protocol is emitted on receive\n// connected, disconnected is emitted.\noutput = function() {\n  var transport = new websocketbrowser(input.options);\n  transport.on('send', function(payload) {\n    output({out: payload});\n  });\n};\n"
+      "fn": "// protocol is emitted on receive\n// connected, disconnected is emitted.\noutput = function() {\n  var transport = new websocketbrowser($.options);\n  transport.on('send', function(payload) {\n    output({out: $.create(payload)});\n  });\n};\n"
     },
     {
       "dependencies": {
@@ -167,7 +167,7 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "output = function() {\n  var p = new chix();\n\n  cb({\n    out: p.parse(input.in)\n  });\n\n  var iips = p.getIIPs();\n\n  if(iips) {\n    cb({iips: iips});\n  }\n};\n"
+      "fn": "output = function() {\n  var p = new chix();\n\n  cb({\n    out: p.parse($.in)\n  });\n\n  var iips = p.getIIPs();\n\n  if(iips) {\n    cb({iips: $.create(iips)});\n  }\n};\n"
     },
     {
       "dependencies": {
@@ -212,7 +212,7 @@
       "title": "Remote Loader",
       "ns": "chix",
       "name": "loaderRemote",
-      "fn": "output = function() {\n  var lr = new remote();\n  lr.load(input.flow, function(err, results) {\n    if(err) {\n      output({error: err});\n    } else {\n      output({out: results});\n    }\n    done();\n  });\n};\n"
+      "fn": "output = function() {\n  var lr = new remote();\n  lr.load($.flow, function(err, results) {\n    if(err) {\n      output({error: $.create(err)});\n    } else {\n      output({out: $.create(results)});\n    }\n    done();\n  });\n};\n"
     },
     {
       "dependencies": {
@@ -241,7 +241,7 @@
       "title": "Convert JSON Flow to Dot",
       "ns": "chix",
       "name": "toDot",
-      "fn": "on.input.in = function() {\n  output({out: chix_flow_todot(input.in)});\n};\n"
+      "fn": "on.input.in = function() {\n  output({out: $.write('in', chix_flow_todot($.in))});\n};\n"
     }
   ],
   "twigs": []

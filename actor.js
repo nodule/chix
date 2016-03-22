@@ -74,67 +74,67 @@ module.exports = {
       "chix-flow": require('chix-flow')
     }
   },
-  fn: function actor(input, output, state, done, cb, on, chix_flow) {
+  fn: function actor(input, $, output, state, done, cb, on, chix_flow) {
     var r = function() {
-      var actor = input.actor || new chix_flow.Actor();
+      var actor = $.actor || new chix_flow.Actor();
 
-      if (input.loader) {
-        actor.addLoader(input.loader);
+      if ($.loader) {
+        actor.addLoader($.loader);
       }
 
-      if (input.pm) {
-        actor.addProcessManager(input.pm);
+      if ($.pm) {
+        actor.addProcessManager($.pm);
       }
 
-      if (input.io) {
-        actor.addIoHandler(input.io);
+      if ($.io) {
+        actor.addIoHandler($.io);
       }
 
-      actor.on('inputRequired', function(data) {
+      actor.on('inputRequired', function(val) {
         output({
-          error: data
+          error: $.create(val)
         });
       });
 
-      actor.on('error', function(data) {
+      actor.on('error', function(val) {
         output({
-          error: data
+          error: $.create(val)
         });
       });
 
       actor.on('addNode', function(event) {
         output({
-          addNode: event.node
+          addNode: $.create(event.node)
         });
       });
 
       actor.on('removeNode', function(event) {
         output({
-          removeNode: event.node
+          removeNode: $.create(event.node)
         });
       });
 
       actor.on('addLink', function(link) {
         output({
-          addLink: link
+          addLink: $.create(link)
         });
       });
 
       actor.on('removeLink', function(link) {
         output({
-          removeLink: link
+          removeLink: $.create(link)
         });
       });
 
       actor.ioHandler.on('connect', function(link) {
         output({
-          connectLink: link
+          connectLink: $.create(link)
         });
       });
 
       actor.ioHandler.on('disconnect', function(link) {
         output({
-          disconnectLink: link
+          disconnectLink: $.create(link)
         });
       });
 
@@ -142,19 +142,19 @@ module.exports = {
       /*
       actor.ioHandler.on('data', function (link) {
         output({
-          disconnectLink: link
+          disconnectLink: $.create(link)
         });
       });
       */
 
-      actor.addMap(input.flow);
+      actor.addMap($.flow);
 
       // is done by loader now.
-      // actor.addNodeDefinitions(input.defs);
+      // actor.addNodeDefinitions($.defs);
       actor.run();
 
-      if (input.iips) {
-        actor.sendIIPs(input.iips);
+      if ($.iips) {
+        actor.sendIIPs($.iips);
         actor.push();
       }
     }.call(this);

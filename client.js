@@ -40,12 +40,12 @@ module.exports = {
       }
     }
   },
-  fn: function client(input, output, state, done, cb, on, runtime, websocket_browser) {
+  fn: function client(input, $, output, state, done, cb, on, runtime, websocket_browser) {
     var r = function() {
-      var transport = new websocketbrowser(input.options);
+      var transport = new websocketbrowser($.options);
       transport.on('send', function(payload) {
         output({
-          out: payload
+          out: $.create(payload)
         });
       });
     }.call(this);

@@ -14,7 +14,7 @@ module.exports = {
         fn: function __IN__(data, x, source, state, input, output, chix_flow_todot) {
           var r = function() {
             output({
-              out: chix_flow_todot(input.in)
+              out: $.write('in', chix_flow_todot($.in))
             });
           }.call(this);
           return {
