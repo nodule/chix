@@ -11,7 +11,7 @@ module.exports = {
       "in": {
         title: "Flow JSON",
         type: "object",
-        fn: function __IN__(data, x, source, state, input, output, chix_flow_todot) {
+        fn: function __IN__(data, source, state, input, $, output, chix_flow_todot) {
           var r = function() {
             output({
               out: $.write('in', chix_flow_todot($.in))
