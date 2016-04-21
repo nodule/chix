@@ -237,6 +237,7 @@
       "phrases": {
         "active": "Converting to dot"
       },
+      "async": true,
       "description": "Converts a JSON Flow to Dot format",
       "title": "Convert JSON Flow to Dot",
       "ns": "chix",

@@ -3,6 +3,7 @@ module.exports = {
   ns: "chix",
   title: "Convert JSON Flow to Dot",
   description: "Converts a JSON Flow to Dot format",
+  async: true,
   phrases: {
     active: "Converting to dot"
   },
