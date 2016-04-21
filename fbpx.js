@@ -31,19 +31,17 @@ module.exports = {
   },
   fn: function fbpx(input, $, output, state, done, cb, on, chix) {
     var r = function() {
-      var p = new chix();
+      var p = new chix()
 
       output({
-        out: p.parse($.in)
-      });
+        out: $.write('in', p.parse($.in))
+      })
 
-      var iips = p.getIIPs();
+      var iips = p.getIIPs()
 
-      if (iips) {
-        output({
-          iips: $.create(iips)
-        });
-      }
+      if (iips) output({
+        iips: $.create(iips)
+      })
     }.call(this);
     return {
       output: output,

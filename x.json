@@ -167,7 +167,7 @@
       "title": "FBPx",
       "ns": "chix",
       "name": "fbpx",
-      "fn": "output = function() {\n  var p = new chix();\n\n  cb({\n    out: p.parse($.in)\n  });\n\n  var iips = p.getIIPs();\n\n  if(iips) {\n    cb({iips: $.create(iips)});\n  }\n};\n"
+      "fn": "output = function() {\n  var p = new chix()\n\n  cb({out: $.write('in', p.parse($.in))})\n\n  var iips = p.getIIPs()\n\n  if(iips) cb({iips: $.create(iips)})\n}\n"
     },
     {
       "dependencies": {
@@ -243,6 +243,5 @@
       "name": "toDot",
       "fn": "on.input.in = function() {\n  output({out: $.write('in', chix_flow_todot($.in))});\n};\n"
     }
-  ],
-  "twigs": []
+  ]
 }

@@ -1,13 +1,9 @@
 output = function() {
-  var p = new chix();
+  var p = new chix()
 
-  cb({
-    out: p.parse($.in)
-  });
+  cb({out: $.write('in', p.parse($.in))})
 
-  var iips = p.getIIPs();
+  var iips = p.getIIPs()
 
-  if(iips) {
-    cb({iips: $.create(iips)});
-  }
-};
+  if(iips) cb({iips: $.create(iips)})
+}
